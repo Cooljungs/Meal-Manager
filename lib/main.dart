@@ -27,16 +27,11 @@ class _MainState extends State<Main> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          leading: Icon(Icons.menu),
+          title: Text("Die Fünf Fritzen"),
+          actions: [Icon(Icons.person), SizedBox(height: 5, width: 15)],
           elevation: 0,
           centerTitle: true,
-          bottom: PreferredSize(
-            preferredSize: Size.fromHeight(50),
-            child: AppBar(
-              title: Text("Home"),
-              elevation: 0,
-              centerTitle: true,
-            ),
-          ),
         ),
         body: Home(),
       ),

@@ -28,24 +28,24 @@ themeHandler(context) {
 
       /// text
       primaryTextTheme:
-      GoogleFonts.montserratTextTheme(Theme.of(context).textTheme).copyWith(
-        headline5: GoogleFonts.montserrat(
+          GoogleFonts.montserratTextTheme(Theme.of(context).textTheme).copyWith(
+        headline6: GoogleFonts.roboto(
           textStyle: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w600,
-            fontSize: 24,
-          ),
-        ),
-        headline6: GoogleFonts.montserrat(
-          textStyle: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w600,
-            fontSize: 48,
+            fontSize: 18,
           ),
         ),
       ),
       textTheme:
-      GoogleFonts.montserratTextTheme(Theme.of(context).textTheme).copyWith(
+          GoogleFonts.montserratTextTheme(Theme.of(context).textTheme).copyWith(
+        headline1: GoogleFonts.roboto(
+          textStyle: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w700,
+            fontSize: 32,
+          ),
+        ),
         headline5: GoogleFonts.montserrat(
           textStyle: TextStyle(
             color: Colors.black,
@@ -87,7 +87,7 @@ themeHandler(context) {
 
       /// text
       primaryTextTheme:
-      GoogleFonts.montserratTextTheme(Theme.of(context).textTheme).copyWith(
+          GoogleFonts.montserratTextTheme(Theme.of(context).textTheme).copyWith(
         headline6: GoogleFonts.montserrat(
           textStyle: TextStyle(
             color: Colors.white,
@@ -97,7 +97,14 @@ themeHandler(context) {
         ),
       ),
       textTheme:
-      GoogleFonts.montserratTextTheme(Theme.of(context).textTheme).copyWith(
+          GoogleFonts.montserratTextTheme(Theme.of(context).textTheme).copyWith(
+        headline1: GoogleFonts.montserrat(
+          textStyle: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+            fontSize: 24,
+          ),
+        ),
         headline6: GoogleFonts.montserrat(
           textStyle: TextStyle(
             color: Colors.white,
