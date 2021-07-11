@@ -50,40 +50,6 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 2,
-        elevation: 0,
-        selectedItemColor: Colors.green,
-        unselectedItemColor: Theme.of(context).accentColor,
-        showUnselectedLabels: false,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: "Einkauf",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.kitchen),
-            label: "Kühlschrank",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Dashboard",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_view_week),
-            label: "Wochenplan",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group),
-            label: "Haushalt",
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green,
-        child: Icon(Icons.restaurant),
-        onPressed: () {},
-      ),
     );
   }
 }
