@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
-Map zutaten = {
-  "Tomaten (4 Stück)": "Chicken Shorba, Pizza",
-  "Kokosmilch (1 L)": "Chicken Shorba",
-  "Brokkoli (500g)": "Pizza",
-  "Curry (4 EL)": "Chicken Shorba, Curry-Wurst",
-  "Bratwüste (8 Stück)": "Curry-Wurst"
-};
+List zutaten = [
+  ["Tomaten", "4 Stück", "Chicken Shorba, Pizza", true],
+  ["Brokkoli", "500g", "Pizza", false]
+];
 
 class Shopping extends StatefulWidget {
   @override
@@ -35,7 +32,7 @@ class _ShoppingState extends State<Shopping> {
 
 class ShoppingTile extends StatefulWidget {
   final int index;
-  final Map zutaten;
+  final List zutaten;
   const ShoppingTile(this.index, this.zutaten);
 
   @override
@@ -43,21 +40,27 @@ class ShoppingTile extends StatefulWidget {
 }
 
 class ShoppingTileState extends State<ShoppingTile> {
-  bool? currentValue = false;
+  bool check = false;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
-      child: CheckboxListTile(
-        tileColor: Theme.of(context).cardColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        value: currentValue,
-        onChanged: (bool? value) {
-          setState(() => currentValue = value!);
+      child: ListTile(
+        onTap: () {
+          setState(() => widget.zutaten[widget.index - 1][3]
+              ? widget.zutaten[widget.index - 1][3] = false
+              : widget.zutaten[widget.index - 1][3] = true);
         },
-        title: Text(widget.zutaten.keys.toList()[widget.index - 1]),
-        subtitle: Text(widget.zutaten.values.toList()[widget.index - 1]),
+        tileColor: widget.zutaten[widget.index - 1][3]
+            ? Theme.of(context).disabledColor
+            : Theme.of(context).cardColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        trailing: widget.zutaten[widget.index - 1][3]
+            ? Icon(Icons.task_alt_outlined, color: Colors.black)
+            : Icon(Icons.radio_button_unchecked_rounded, color: Colors.black),
+        title: Text(widget.zutaten[widget.index - 1][0]),
+        subtitle: Text(widget.zutaten[widget.index - 1][2]),
       ),
     );
   }

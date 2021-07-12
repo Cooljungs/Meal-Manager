@@ -16,9 +16,10 @@ themeHandler(context) {
       primaryColor: Colors.white,
       primarySwatch: white,
       accentColor: Colors.black,
-      highlightColor: Colors.green,
+      focusColor: Colors.green,
       cardColor: Colors.grey[100],
       canvasColor: Colors.white,
+      disabledColor: Colors.green.withOpacity(0.2),
       backgroundColor: Colors.grey[100],
       scaffoldBackgroundColor: Colors.white,
       visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -29,6 +30,10 @@ themeHandler(context) {
           backgroundColor: Colors.red,
         ),
       ),
+
+      iconTheme: IconThemeData(color: Colors.black),
+      primaryIconTheme: IconThemeData(color: Colors.black),
+      accentIconTheme: IconThemeData(color: Colors.black),
 
       /// text
       primaryTextTheme:
@@ -79,7 +84,7 @@ themeHandler(context) {
       primaryColor: Colors.black,
       primarySwatch: black,
       accentColor: Colors.white,
-      highlightColor: Colors.green,
+      focusColor: Colors.green,
       cardColor: Colors.black,
       canvasColor: Colors.black,
       backgroundColor: Colors.grey[900],
@@ -92,6 +97,8 @@ themeHandler(context) {
           backgroundColor: Colors.red,
         ),
       ),
+
+      iconTheme: IconThemeData(color: Colors.black),
 
       /// text
       primaryTextTheme:

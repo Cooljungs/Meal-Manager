@@ -114,7 +114,7 @@ class _GroupState extends State<Group> {
                     height: 42,
                     width: 42,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).highlightColor,
+                      color: Theme.of(context).focusColor,
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child:

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
-class Home extends StatefulWidget {
+class Recipes extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _RecipesState createState() => _RecipesState();
 }
 
-class _HomeState extends State<Home> {
+class _RecipesState extends State<Recipes> {
   @override
   Widget build(BuildContext context) {
     return Center(
