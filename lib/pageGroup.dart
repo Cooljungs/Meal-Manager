@@ -42,9 +42,6 @@ class _GroupState extends State<Group> {
             physics: BouncingScrollPhysics(),
             itemCount: 6,
             itemBuilder: (context, index) {
-              bool shadow = false;
-
-              /// Schatten ein/aus
               return Container(
                 margin: index == 0
                     ? EdgeInsets.fromLTRB(16, 8, 16, 32)
@@ -52,14 +49,6 @@ class _GroupState extends State<Group> {
                 width: 230,
                 decoration: BoxDecoration(
                   color: Theme.of(context).cardColor,
-                  boxShadow: shadow
-                      ? [
-                          BoxShadow(
-                              offset: Offset(5, 10),
-                              blurRadius: 15,
-                              color: Color(0x20000000))
-                        ]
-                      : [],
                   borderRadius: BorderRadius.circular(20),
                 ),
               );
