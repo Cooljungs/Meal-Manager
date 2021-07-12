@@ -8,10 +8,8 @@ class Week extends StatefulWidget {
 class _WeekState extends State<Week> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text("Wochenplan"),
-      ),
+    return Center(
+      child: Text("Wochenplan"),
     );
   }
 }

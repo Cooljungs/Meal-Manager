@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '.themes.dart';
 import 'pageShopping.dart';
 import 'pageFridge.dart';
@@ -44,8 +43,9 @@ class _MainState extends State<Main> {
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: current_index,
           elevation: 0,
-          selectedItemColor: Colors.green,
+          selectedItemColor: Theme.of(context).highlightColor,
           unselectedItemColor: Theme.of(context).accentColor,
+          backgroundColor: Colors.green,
           showUnselectedLabels: false,
           onTap: (value) {
             setState(() => current_index = value);
@@ -60,8 +60,8 @@ class _MainState extends State<Main> {
               label: "Kühlschrank",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_rounded),
-              label: "Dashboard",
+              icon: Icon(Icons.restaurant_rounded),
+              label: "Rezepte",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.event_rounded),
@@ -73,11 +73,13 @@ class _MainState extends State<Main> {
             ),
           ],
         ),
+        /*
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.green,
           child: Icon(Icons.restaurant_rounded),
           onPressed: () {},
         ),
+        */
       ),
     );
   }

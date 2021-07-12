@@ -16,7 +16,11 @@ themeHandler(context) {
       primaryColor: Colors.white,
       primarySwatch: white,
       accentColor: Colors.black,
-      scaffoldBackgroundColor: white,
+      highlightColor: Colors.green,
+      cardColor: Colors.grey[100],
+      canvasColor: Colors.white,
+      backgroundColor: Colors.grey[100],
+      scaffoldBackgroundColor: Colors.white,
       visualDensity: VisualDensity.adaptivePlatformDensity,
 
       /// Buttons
@@ -39,7 +43,7 @@ themeHandler(context) {
       ),
       textTheme:
           GoogleFonts.montserratTextTheme(Theme.of(context).textTheme).copyWith(
-        headline1: GoogleFonts.roboto(
+        headline2: GoogleFonts.roboto(
           textStyle: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w700,
@@ -73,32 +77,43 @@ themeHandler(context) {
     //
     darkTheme: ThemeData(
       primaryColor: Colors.black,
+      primarySwatch: black,
       accentColor: Colors.white,
-      scaffoldBackgroundColor: Colors.black,
+      highlightColor: Colors.green,
+      cardColor: Colors.black,
+      canvasColor: Colors.black,
+      backgroundColor: Colors.grey[900],
+      scaffoldBackgroundColor: Colors.grey[900],
+      visualDensity: VisualDensity.adaptivePlatformDensity,
 
       /// Buttons
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-            backgroundColor: Colors.red,
-            primary: Colors.white,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10))),
+          backgroundColor: Colors.red,
+        ),
       ),
 
       /// text
       primaryTextTheme:
           GoogleFonts.montserratTextTheme(Theme.of(context).textTheme).copyWith(
-        headline6: GoogleFonts.montserrat(
+        headline6: GoogleFonts.roboto(
           textStyle: TextStyle(
             color: Colors.white,
-            fontWeight: FontWeight.w500,
-            fontSize: 48,
+            fontWeight: FontWeight.w600,
+            fontSize: 18,
           ),
         ),
       ),
       textTheme:
           GoogleFonts.montserratTextTheme(Theme.of(context).textTheme).copyWith(
-        headline1: GoogleFonts.montserrat(
+        headline2: GoogleFonts.roboto(
+          textStyle: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w700,
+            fontSize: 32,
+          ),
+        ),
+        headline5: GoogleFonts.montserrat(
           textStyle: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w600,
@@ -108,9 +123,12 @@ themeHandler(context) {
         headline6: GoogleFonts.montserrat(
           textStyle: TextStyle(
             color: Colors.white,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
             fontSize: 48,
           ),
+        ),
+        bodyText1: GoogleFonts.sourceSansPro(
+          textStyle: TextStyle(color: Colors.white),
         ),
         bodyText2: GoogleFonts.sourceSansPro(
           textStyle: TextStyle(color: Colors.white),
