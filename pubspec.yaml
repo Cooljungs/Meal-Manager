@@ -35,5 +35,7 @@ flutter:
     - assets/images/
     - assets/images/avatars/
     - assets/images/avatars/v2/
+    - assets/images/avatars/v3/
+    - assets/images/recipes/
 
   #fonts:
