@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:meal_manager/presentation/app_icons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '.themes.dart';
-import 'pageShopping.dart';
-import 'pageFridge.dart';
-import 'pageRecipes.dart';
-import 'pageWeek.dart';
-import 'pageGroup.dart';
+
+import 'pages/shopping.dart';
+import 'pages/fridge.dart';
+import 'pages/recipes.dart';
+import 'pages/week.dart';
+import 'pages/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,23 +25,90 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> {
+  //
   final PageController controller = PageController(initialPage: 0);
-
-  List pageList = [Shopping(), Fridge(), Recipes(), Week(), Group()];
-  int currentIndex = 2;
+  int currentIndex = 0; // Start-Index
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: Icon(Icons.menu),
+          leading: Builder(
+            builder: (context) => IconButton(
+                icon: Icon(Icons.menu_rounded, size: 32),
+                onPressed: () => Scaffold.of(context).openDrawer()),
+          ),
           title: Text("Die Fünf Fritzen"),
-          actions: [Icon(Icons.person), SizedBox(height: 5, width: 15)],
+          actions: [
+            Container(
+              padding: const EdgeInsets.fromLTRB(0, 10, 16, 10),
+              child: InkWell(
+                  borderRadius: BorderRadius.circular(999),
+                  child: SvgPicture.asset(
+                    "assets/images/avatars/v3/avatar_1.svg",
+                    width: 36,
+                    height: 36,
+                  ),
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text(
+                              "Mein Profil",
+                              style: Theme.of(context).textTheme.headline4,
+                            ),
+                          );
+                        });
+                  }),
+            ),
+          ],
           elevation: 0,
           centerTitle: false,
         ),
-        body: pageList[currentIndex],
+        body: [Home(), Week(), Fridge(), Shopping()][currentIndex],
+        drawer: Drawer(
+            child: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                physics: BouncingScrollPhysics(),
+                children: [
+                  DrawerHeader(
+                      child: Text("Banner \nmit Logo",
+                          style: TextStyle(
+                              fontSize: 48,
+                              fontWeight: FontWeight.w600,
+                              color: Theme.of(context).primaryColor)),
+                      decoration:
+                          BoxDecoration(color: Theme.of(context).focusColor)),
+                  ListTile(
+                      leading: Icon(Icons.group_rounded,
+                          color: Theme.of(context).accentColor),
+                      title: Text("Die Fünf Fritzen"),
+                      onTap: () {}),
+                  ListTile(
+                      leading: Icon(Icons.group_rounded,
+                          color: Theme.of(context).accentColor),
+                      title: Text("Leipziger Banausen"),
+                      onTap: () {}),
+                  ListTile(
+                      leading: Icon(Icons.add_rounded,
+                          color: Theme.of(context).focusColor),
+                      title: Text("Gruppe hinzufügen"),
+                      onTap: () {}),
+                ],
+              ),
+            ),
+            Divider(),
+            ListTile(
+                leading: Icon(Icons.settings_rounded,
+                    color: Theme.of(context).accentColor),
+                title: Text("Einstellungen"),
+                onTap: () {}),
+          ],
+        )),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentIndex,
           type: BottomNavigationBarType.fixed,
@@ -55,13 +123,22 @@ class _MainState extends State<Main> {
           },
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart_rounded),
-              label: "Einkauf",
+              icon: Icon(Icons.home_rounded),
+              label: "Haushalt",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.event_rounded),
+              label: "Wochenplan",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.kitchen_rounded),
               label: "Kühlschrank",
             ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart_rounded),
+              label: "Einkaufsliste",
+            ),
+            /*
             BottomNavigationBarItem(
               icon: Icon(
                 AppIcons.recipes,
@@ -69,23 +146,21 @@ class _MainState extends State<Main> {
               ),
               label: "Rezepte",
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.event_rounded),
-              label: "Wochenplan",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.group_rounded),
-              label: "Haushalt",
-            ),
+            */
           ],
         ),
-        /*
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.green,
+          backgroundColor: Theme.of(context).focusColor,
           child: Icon(Icons.restaurant_rounded),
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(content: Recipes());
+              },
+            );
+          },
         ),
-        */
       ),
     );
   }

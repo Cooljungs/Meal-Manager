@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'main.dart';
+import './main.dart';
 import '.colors.dart';
 
 themeHandler(context) {
@@ -37,32 +37,54 @@ themeHandler(context) {
 
       /// text
       primaryTextTheme:
-          GoogleFonts.montserratTextTheme(Theme.of(context).textTheme).copyWith(
-        headline6: GoogleFonts.roboto(
-          textStyle: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w600,
-            fontSize: 18,
-          ),
-        ),
-      ),
-      textTheme:
-          GoogleFonts.montserratTextTheme(Theme.of(context).textTheme).copyWith(
-        headline2: GoogleFonts.roboto(
-          textStyle: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w700,
-            fontSize: 32,
-          ),
-        ),
-        headline5: GoogleFonts.montserrat(
+          GoogleFonts.sourceSansProTextTheme(Theme.of(context).textTheme)
+              .copyWith(
+        headline6: GoogleFonts.sourceSansPro(
           textStyle: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w600,
             fontSize: 24,
           ),
         ),
-        headline6: GoogleFonts.montserrat(
+      ),
+      textTheme: GoogleFonts.sourceSansProTextTheme(Theme.of(context).textTheme)
+          .copyWith(
+        headline1: GoogleFonts.sourceSansPro(
+          textStyle: TextStyle(
+            color: Colors.green,
+            fontWeight: FontWeight.w600,
+            fontSize: 32,
+          ),
+        ),
+        headline2: GoogleFonts.sourceSansPro(
+          textStyle: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w700,
+            fontSize: 32,
+          ),
+        ),
+        headline3: GoogleFonts.sourceSansPro(
+          textStyle: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w600,
+            fontSize: 24,
+          ),
+        ),
+        headline4: GoogleFonts.sourceSansPro(
+          textStyle: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w600,
+            fontSize: 18,
+          ),
+        ),
+        headline5: GoogleFonts.sourceSansPro(
+          textStyle: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w600,
+            fontSize: 14,
+          ),
+        ),
+        headline6: GoogleFonts.sourceSansPro(
           textStyle: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w600,
@@ -85,10 +107,10 @@ themeHandler(context) {
       primarySwatch: black,
       accentColor: Colors.white,
       focusColor: Colors.green,
-      cardColor: Colors.black,
-      canvasColor: Colors.black,
-      backgroundColor: Colors.grey[900],
-      scaffoldBackgroundColor: Colors.grey[900],
+      cardColor: Colors.grey[900],
+      canvasColor: Colors.grey[900],
+      backgroundColor: Colors.black,
+      scaffoldBackgroundColor: Colors.black,
       visualDensity: VisualDensity.adaptivePlatformDensity,
 
       /// Buttons
