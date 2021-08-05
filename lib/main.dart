@@ -156,7 +156,7 @@ class _MainState extends State<Main> {
             showDialog(
               context: context,
               builder: (context) {
-                return AlertDialog(content: Recipes());
+                return Recipes();
               },
             );
           },

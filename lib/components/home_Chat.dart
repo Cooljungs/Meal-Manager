@@ -323,7 +323,7 @@ class _ChatState extends State<Chat> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.fromLTRB(0, 16, 16, 16),
+                //margin: const EdgeInsets.fromLTRB(0, 16, 16, 16),
                 height: 42,
                 width: 42,
                 decoration: BoxDecoration(
