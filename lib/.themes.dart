@@ -22,15 +22,37 @@ themeHandler(context) {
       disabledColor: Colors.green.withOpacity(0.2),
       backgroundColor: Colors.grey[100],
       scaffoldBackgroundColor: Colors.white,
+      errorColor: Colors.red,
+      hintColor: Colors.grey[400],
       visualDensity: VisualDensity.adaptivePlatformDensity,
 
       /// Buttons
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
+          padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
           backgroundColor: Colors.green,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         ),
+      ),
+
+      dialogTheme: DialogTheme(
+          titleTextStyle: TextStyle(
+              color: Colors.black, fontWeight: FontWeight.w600, fontSize: 24),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16))),
+
+      /// TextField-Themes etc.
+      inputDecorationTheme: InputDecorationTheme(
+        hintStyle: TextStyle(color: Colors.grey[400]),
+        labelStyle: TextStyle(color: Colors.grey[400]),
+        enabledBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+        border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+        focusedBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: Colors.green)),
+        errorBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
       ),
 
       iconTheme: IconThemeData(color: Colors.black),

@@ -30,7 +30,7 @@ class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(16, 16, 16, 150),
+      margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
       height: 400,
       width: double.infinity,
       decoration: BoxDecoration(
@@ -296,34 +296,31 @@ class _ChatState extends State<Chat> {
             children: [
               Expanded(
                 child: Container(
-                  margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+                  margin: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                   height: 42,
                   //width: 250,
-
                   decoration: BoxDecoration(
                     color: Colors.grey[300],
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: Center(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: "Nachricht",
-                        hintStyle: TextStyle(color: Colors.grey),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0x00000000))),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0x00000000))),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0x00000000))),
-                        errorBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0x00000000))),
-                      ),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "Nachricht",
+                      hintStyle: TextStyle(color: Colors.grey),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0x00000000))),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0x00000000))),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0x00000000))),
+                      errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0x00000000))),
                     ),
                   ),
                 ),
               ),
               Container(
-                //margin: const EdgeInsets.fromLTRB(0, 16, 16, 16),
+                margin: const EdgeInsets.fromLTRB(0, 16, 16, 16),
                 height: 42,
                 width: 42,
                 decoration: BoxDecoration(

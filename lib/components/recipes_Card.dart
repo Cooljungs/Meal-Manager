@@ -14,7 +14,7 @@ class _RecipeCardState extends State<RecipeCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 230,
+      width: 200,
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(20),
@@ -29,12 +29,21 @@ class _RecipeCardState extends State<RecipeCard> {
                 borderRadius: BorderRadius.circular(16),
               ),
               child: ClipRRect(
-                clipBehavior: Clip.hardEdge,
-                borderRadius: BorderRadius.circular(16),
-                child: Image.asset(
-                    "assets/images/recipes/Rezept_ChickenShorba.png",
-                    fit: BoxFit.fitWidth),
-              ),
+                  clipBehavior: Clip.hardEdge,
+                  borderRadius: BorderRadius.circular(16),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    fit: StackFit.expand,
+                    children: [
+                      Image.asset(
+                          "assets/images/recipes/Rezept_ChickenShorba.png",
+                          fit: BoxFit.fitWidth),
+                      Positioned.fill(
+                          child: Material(
+                              color: Colors.transparent,
+                              child: InkWell(onTap: () {})))
+                    ],
+                  )),
             ),
           ),
           ListTile(
@@ -59,19 +68,26 @@ class _RecipeCardState extends State<RecipeCard> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                    width: 140,
-                    height: 32,
-                    child: TextButton(
-                        onPressed: () {}, child: Text("Vorschlagen"))),
-                IconButton(
-                    onPressed: () => setState(() => liked = !liked),
-                    icon: liked
-                        ? Icon(
-                            Icons.favorite_rounded,
-                            color: Colors.red,
-                          )
-                        : Icon(Icons.favorite_border_rounded))
+                Flexible(
+                  flex: 3,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                      child: Text("Vorschlagen"),
+                    ),
+                  ),
+                ),
+                Flexible(
+                  child: IconButton(
+                      onPressed: () => setState(() => liked = !liked),
+                      icon: liked
+                          ? Icon(
+                              Icons.favorite_rounded,
+                              color: Colors.red,
+                            )
+                          : Icon(Icons.favorite_border_rounded)),
+                )
               ],
             ),
           )

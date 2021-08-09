@@ -9,16 +9,18 @@ class Recipes extends StatefulWidget {
 class _RecipesState extends State<Recipes> {
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text("Kochbuch"),
-      content: Container(
-        width: MediaQuery.of(context).size.width * 0.8,
-        color: Colors.pink,
+    return Scaffold(
+      appBar: AppBar(title: Text("Kochbuch"), elevation: 0),
+      body: Container(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
         child: GridView.builder(
           physics: BouncingScrollPhysics(),
-          itemCount: 6,
-          gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+          itemCount: 3,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+              childAspectRatio: 2 / 3),
           itemBuilder: (context, index) {
             return GridTile(child: RecipeCard(index));
           },
