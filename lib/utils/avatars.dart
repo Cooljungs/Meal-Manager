@@ -12,7 +12,7 @@ avatarPainter(context, double size) {
         color: Theme.of(context).colorScheme.primaryVariant,
       ),
       SvgPicture.asset(
-        "$avatars/hair/5.svg",
+        "$avatars/hair/6.svg",
         width: size,
         height: size,
         color: Theme.of(context).accentColor,

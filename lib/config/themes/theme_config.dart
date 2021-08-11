@@ -77,6 +77,10 @@ theme(context, primaryColor, onPrimaryColor, secondaryColor, onSecondaryColor,
     ///* AppBar
     appBarTheme: AppBarTheme(elevation: 0, centerTitle: true),
 
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      
+    ),
+
     ///* Icon-Themes
     iconTheme: IconThemeData(color: onPrimaryColor),
     primaryIconTheme: IconThemeData(color: onPrimaryColor),
@@ -91,10 +95,6 @@ theme(context, primaryColor, onPrimaryColor, secondaryColor, onSecondaryColor,
       ),
     ),
 
-    /*
-    
-    */
-
     ///* Alert-Dialogs etc.
     dialogTheme: DialogTheme(
         titleTextStyle: TextStyle(
@@ -102,7 +102,6 @@ theme(context, primaryColor, onPrimaryColor, secondaryColor, onSecondaryColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16))),
 
     ///* Text-Themes
-
     primaryTextTheme:
         GoogleFonts.sourceSansProTextTheme(Theme.of(context).textTheme)
             .copyWith(
@@ -120,7 +119,6 @@ theme(context, primaryColor, onPrimaryColor, secondaryColor, onSecondaryColor,
         ),
       ),
     ),
-
     textTheme: GoogleFonts.sourceSansProTextTheme(Theme.of(context).textTheme)
         .copyWith(
       button: GoogleFonts.sourceSansPro(
@@ -188,7 +186,7 @@ theme(context, primaryColor, onPrimaryColor, secondaryColor, onSecondaryColor,
 
     ///* TextField-Themes etc.
     textSelectionTheme: TextSelectionThemeData(
-      cursorColor: errorColor,
+      cursorColor: secondaryColor,
       selectionColor: hintColor,
       selectionHandleColor: secondaryColor,
     ),

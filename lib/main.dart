@@ -188,18 +188,22 @@ class _MainState extends State<Main> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home_rounded),
             label: "Haushalt",
+            tooltip: "",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.event_rounded),
             label: "Wochenplan",
+            tooltip: "",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.kitchen_rounded),
             label: "Kühlschrank",
+            tooltip: "",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart_rounded),
             label: "Einkaufsliste",
+            tooltip: "",
           ),
         ],
       ),
