@@ -1,0 +1,36 @@
+{
+    "files.exclude": {
+    
+        // irrelevant
+		".dart_tool/": true,
+		".flutter-plugins": true,
+		".flutter-plugins-dependencies": true,
+		".gitignore" : true,
+		".idea/": true,
+		".metadata": true,
+		".packages": true,
+		"build/": true,
+		"lib/generated_plugin_registrant.dart": true,
+		"meal_manager.iml": true,
+        "pubspec.lock": true,
+        
+        // idk
+		".vscode/": true,
+		"android/.gradle/": true,
+		"android/.gitignore": true,
+		"android/gradlew": true,
+		"android/gradlew.bat": true,
+		"android/local.properties": true,
+		"android/meal_manager_android.iml": true,
+		"android/app/.gitignore": true,
+		"android/gradle/": true,
+		"android/gradle.properties": true,
+		"android/settings.gradle": true,
+		
+		// WICHTIG ???
+		"ios/": true,
+		"test/": true,
+		"web/": true,
+		
+    }
+}
