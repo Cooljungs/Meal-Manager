@@ -51,7 +51,9 @@ class _MemberListState extends State<MemberList> {
                             width: 128,
                             height: 128,
                           ),
-                          Text(groupMembers.keys.toList()[index])
+                          Text(groupMembers.keys.toList()[index] == userName
+                              ? "Mein Profil"
+                              : groupMembers.keys.toList()[index])
                         ],
                       ),
                       content:

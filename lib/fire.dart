@@ -11,18 +11,22 @@ class AuthenticationService {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
-      return "Success";
+      return "success";
     } on FirebaseAuthException catch (e) {
       print(e.code);
       return e.code.toString();
     }
   }
 
-  Future<String> signUp(String email, String password) async {
+  Future<String> signUp(String email, String password, String password2) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      return "Success";
+      if (password == password2) {
+        await _firebaseAuth.createUserWithEmailAndPassword(
+            email: email, password: password);
+        return "success";
+      } else {
+        return "passwords-not-identical";
+      }
     } on FirebaseAuthException catch (e) {
       return e.code.toString();
     }

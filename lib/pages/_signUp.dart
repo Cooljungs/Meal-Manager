@@ -4,21 +4,23 @@ import 'package:provider/provider.dart';
 import 'package:meal_manager/fire.dart';
 import '/presentation/custom_icons_icons.dart';
 
-import '_signUp.dart';
+import '_signIn.dart';
+import '_signUp_verify.dart';
 
 // TODO: Passwort vergessen?
 // TODO: Registrierung
 
-class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
 
   @override
-  _SignInState createState() => _SignInState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignUpState extends State<SignUp> {
   String email = "";
   String password = "";
+  String password2 = "";
 
   String status = "";
 
@@ -29,7 +31,8 @@ class _SignInState extends State<SignIn> {
         automaticallyImplyLeading: false,
         title: Padding(
           padding: const EdgeInsets.only(top: 100),
-          child: Text("Anmelden", style: Theme.of(context).textTheme.headline2),
+          child: Text("Registrieren",
+              style: Theme.of(context).textTheme.headline2),
         ),
         centerTitle: true,
         toolbarHeight: 200,
@@ -109,14 +112,35 @@ class _SignInState extends State<SignIn> {
               }),
             ),
             SizedBox(height: 16),
-            Text(context.read<AuthenticationService>().errorHandling(status),
-                style: TextStyle(color: Theme.of(context).errorColor)),
+            TextField(
+              obscureText: true,
+              cursorColor: Theme.of(context).focusColor,
+              decoration: InputDecoration(
+                hintText: "Yummy1337",
+                labelText: "Passwort wiederholen",
+              ),
+              onChanged: (value) => setState(() {
+                status = "";
+                password2 = value;
+              }),
+            ),
+            SizedBox(height: 16),
+            Center(
+              child: Text(status != "success" ? status : "",
+                  style: TextStyle(color: Theme.of(context).errorColor)),
+            ),
             TextButton(
-                onPressed: () {
-                  context
+                onPressed: () async {
+                  await context
                       .read<AuthenticationService>()
-                      .signIn(email, password)
+                      .signUp(email, password, password2)
                       .then((value) => setState(() => status = value));
+                  status == "success"
+                      ? Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpVerify()))
+                      : null;
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(top: 16, bottom: 16),
@@ -127,18 +151,18 @@ class _SignInState extends State<SignIn> {
               style: TextButton.styleFrom(backgroundColor: Colors.transparent),
               child: RichText(
                 text: TextSpan(
-                    text: "Noch keinen Account? ",
+                    text: "Bereits einen Account? ",
                     style: Theme.of(context).textTheme.bodyText2,
                     children: [
                       TextSpan(
-                          text: " Registrieren",
+                          text: " Anmelden",
                           style: TextStyle(
                               color: Theme.of(context).focusColor,
                               fontWeight: FontWeight.bold))
                     ]),
               ),
-              onPressed: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => SignUp())),
+              onPressed: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SignUpVerify())),
             )
           ],
         ),

@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import './main.dart';
-import '.colors.dart';
+import '.utilities.dart';
 
 themeHandler(context) {
   return MaterialApp(
     //
-    //
-    //
-    //
-    /// LIGHT THEME ////////////////////////////////////////////////////////////
+    ///! LIGHT THEME ////////////////////////////////////////////////////////////
     //
     theme: ThemeData(
       primaryColor: Colors.white,
@@ -26,7 +23,15 @@ themeHandler(context) {
       hintColor: Colors.grey[400],
       visualDensity: VisualDensity.adaptivePlatformDensity,
 
-      /// Buttons
+      ///* AppBar
+      appBarTheme: AppBarTheme(elevation: 0, centerTitle: true),
+
+      ///* Icon-Themes
+      iconTheme: IconThemeData(color: Colors.black),
+      primaryIconTheme: IconThemeData(color: Colors.black),
+      accentIconTheme: IconThemeData(color: Colors.black),
+
+      ///* Buttons
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
@@ -36,30 +41,14 @@ themeHandler(context) {
         ),
       ),
 
+      ///* Alert-Dialogs etc.
       dialogTheme: DialogTheme(
           titleTextStyle: TextStyle(
               color: Colors.black, fontWeight: FontWeight.w600, fontSize: 24),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16))),
 
-      /// TextField-Themes etc.
-      inputDecorationTheme: InputDecorationTheme(
-        hintStyle: TextStyle(color: Colors.grey[400]),
-        labelStyle: TextStyle(color: Colors.grey[400]),
-        enabledBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-        border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
-        focusedBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.green)),
-        errorBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
-      ),
-
-      iconTheme: IconThemeData(color: Colors.black),
-      primaryIconTheme: IconThemeData(color: Colors.black),
-      accentIconTheme: IconThemeData(color: Colors.black),
-
-      /// text
+      ///* Text-Themes
       primaryTextTheme:
           GoogleFonts.sourceSansProTextTheme(Theme.of(context).textTheme)
               .copyWith(
@@ -119,12 +108,33 @@ themeHandler(context) {
           textStyle: TextStyle(color: Colors.black),
         ),
       ),
+
+      ///* TextField-Themes etc.
+      inputDecorationTheme: InputDecorationTheme(
+        hintStyle: TextStyle(color: Colors.grey[400]),
+        labelStyle: TextStyle(color: Colors.grey[400]),
+        alignLabelWithHint: true,
+        fillColor: Colors.grey[100],
+        filled: true,
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey),
+            borderRadius: BorderRadius.circular(16)),
+        border: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.grey),
+            borderRadius: BorderRadius.circular(16)),
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.green),
+            borderRadius: BorderRadius.circular(16)),
+        errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.red),
+            borderRadius: BorderRadius.circular(16)),
+      ),
     ),
     //
     //
     //
     //
-    /// DARK THEME /////////////////////////////////////////////////////////////
+    ///! DARK THEME /////////////////////////////////////////////////////////////
     //
     darkTheme: ThemeData(
       primaryColor: Colors.black,
@@ -193,6 +203,6 @@ themeHandler(context) {
     //
     /// OTHERS /////////////////////////////////////////////////////////////////
     //
-    home: Main(),
+    home: UserCheck(),
   );
 }

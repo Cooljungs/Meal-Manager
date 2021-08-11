@@ -9,21 +9,40 @@ class Recipes extends StatefulWidget {
 class _RecipesState extends State<Recipes> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Kochbuch"), elevation: 0),
-      body: Container(
-        padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-        child: GridView.builder(
-          physics: BouncingScrollPhysics(),
-          itemCount: 3,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-              childAspectRatio: 2 / 3),
-          itemBuilder: (context, index) {
-            return GridTile(child: RecipeCard(index));
-          },
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        //
+        appBar: AppBar(
+          title: Text("Kochbuch"),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.post_add_rounded),
+              onPressed: () {},
+            )
+          ],
+          bottom: TabBar(
+            tabs: [Tab(text: "Entdecken"), Tab(text: "Gespeichert")],
+          ),
+        ),
+        //
+        body: TabBarView(
+          children: [
+            GridView.builder(
+              padding: const EdgeInsets.all(16),
+              physics: BouncingScrollPhysics(),
+              itemCount: 7,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                  childAspectRatio: 2 / 3),
+              itemBuilder: (context, index) {
+                return GridTile(child: RecipeCard(index));
+              },
+            ),
+            Center(child: Text("Noch keine Rezepte gespeichert"))
+          ],
         ),
       ),
     );

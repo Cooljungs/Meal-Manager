@@ -6,16 +6,8 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Einstellungen"), elevation: 0),
-      body: Material(
-        child: InkWell(
-          onTap: () => print("Settings Clicked"),
-          child: Ink(
-            color: Colors.green,
-            child: Container(),
-          ),
-        ),
-      ),
+      appBar: AppBar(title: Text("Einstellungen")),
+      body: Container(),
     );
   }
 }
