@@ -1,3 +1,3 @@
-# meal_manager
+# Meal Manager
 
-Lecka Schmecka alla
+Lecka Schmecka, alla
