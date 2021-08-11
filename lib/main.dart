@@ -1,23 +1,27 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:meal_manager/pages/_profile.dart';
+import 'package:meal_manager/utils/avatars.dart';
 import 'package:provider/provider.dart';
 
-import '.themes.dart';
-import '.utilities.dart';
-import 'fire.dart';
-import 'pages/_settings.dart';
-import 'pages/_signIn.dart';
-import 'provider.dart';
+import 'package:meal_manager/config/themes/theme_config.dart';
+import 'package:meal_manager/constants/asset_path.dart';
+import 'package:meal_manager/core/auth/auth_service.dart';
+import 'package:meal_manager/core/login/sign_in.dart';
 
-import 'pages/shopping.dart';
-import 'pages/fridge.dart';
-import 'pages/recipes.dart';
-import 'pages/week.dart';
-import 'pages/home.dart';
+import 'package:meal_manager/screens/main_screens/shopping.dart';
+import 'package:meal_manager/screens/main_screens/fridge.dart';
+import 'package:meal_manager/screens/main_screens/recipes.dart';
+import 'package:meal_manager/screens/main_screens/week.dart';
+import 'package:meal_manager/screens/main_screens/home.dart';
+
+import 'package:meal_manager/screens/sub_screens/profile.dart';
+import 'package:meal_manager/screens/sub_screens/settings.dart';
+
+import 'package:meal_manager/utils/animations.dart';
+import 'package:meal_manager/utils/providers.dart';
 
 Future<void> main() async {
   /// Lässt die App mit Firebase kommunizieren
@@ -95,13 +99,9 @@ class _MainState extends State<Main> {
             padding: const EdgeInsets.fromLTRB(0, 10, 16, 10),
             child: InkWell(
                 borderRadius: BorderRadius.circular(999),
-                child: SvgPicture.asset(
-                  "assets/images/avatars/v3/avatar_1.svg",
-                  width: 36,
-                  height: 36,
-                ),
+                child: avatarPainter(context, 36),
                 onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Profile()))),
+                    Teleport(child: Profile(), type: "scale_topRight"))),
           ),
         ],
       ),
@@ -112,14 +112,14 @@ class _MainState extends State<Main> {
         child: Column(
           children: [
             DrawerHeader(
-                decoration: BoxDecoration(color: Theme.of(context).focusColor),
+                decoration: BoxDecoration(color: Theme.of(context).accentColor),
                 child: Container(
                   width: double.infinity,
                   child: Text("Banner \nmit Logo",
                       style: TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.w600,
-                          color: Theme.of(context).primaryColor)),
+                          color: Theme.of(context).colorScheme.onSecondary)),
                 )),
             Expanded(
               child: ListView.builder(
@@ -130,7 +130,7 @@ class _MainState extends State<Main> {
                   return index < groups.length
                       ? ListTile(
                           leading: Icon(Icons.group_rounded,
-                              color: Theme.of(context).accentColor),
+                              color: Theme.of(context).colorScheme.onPrimary),
                           title: Text(groups[index]),
                           onTap: () {
                             Navigator.pop(context);
@@ -164,10 +164,10 @@ class _MainState extends State<Main> {
             Divider(),
             ListTile(
                 leading: Icon(Icons.settings_rounded,
-                    color: Theme.of(context).accentColor),
+                    color: Theme.of(context).colorScheme.onPrimary),
                 title: Text("Einstellungen"),
-                onTap: () => Navigator.push(
-                    context, CustomPageRoute(child: Settings()))),
+                onTap: () => Navigator.push(context,
+                    Teleport(child: Settings(), type: "scale_bottomLeft"))),
           ],
         ),
       ),
@@ -176,8 +176,8 @@ class _MainState extends State<Main> {
         currentIndex: currentIndex,
         type: BottomNavigationBarType.fixed,
         elevation: 0,
-        selectedItemColor: Theme.of(context).focusColor,
-        unselectedItemColor: Theme.of(context).accentColor,
+        selectedItemColor: Theme.of(context).accentColor,
+        unselectedItemColor: Theme.of(context).colorScheme.onPrimary,
         backgroundColor: Theme.of(context).primaryColor,
         showUnselectedLabels: false,
         showSelectedLabels: currentIndex == 2 ? false : false,
@@ -205,11 +205,11 @@ class _MainState extends State<Main> {
       ),
       //
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).focusColor,
+        backgroundColor: Theme.of(context).accentColor,
         child: Icon(Icons.restaurant_rounded),
         onPressed: () {
           Navigator.push(
-              context, CupertinoPageRoute(builder: (context) => Recipes()));
+              context, Teleport(child: Recipes(), type: "scale_bottomRight"));
         },
       ),
     );

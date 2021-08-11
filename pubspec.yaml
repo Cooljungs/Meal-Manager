@@ -1,7 +1,7 @@
 name: meal_manager
-description: Lecka Schmecka alla
+description: Lecka Schmecka, alla
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none' # Remove to Publish
 
 version: 1.0.0+1
 
@@ -16,6 +16,7 @@ dependencies:
     sdk: flutter
   flutter_svg: ^0.22.0
   google_fonts: ^2.1.0
+  shared_preferences: ^2.0.6
   provider: ^5.0.0
 
 dev_dependencies:
@@ -35,7 +36,5 @@ flutter:
     - assets/
     - assets/images/
     - assets/images/avatars/
-    - assets/images/avatars/v2/
-    - assets/images/avatars/v3/
+    - assets/images/avatars/hair/
     - assets/images/recipes/
-  #fonts:
