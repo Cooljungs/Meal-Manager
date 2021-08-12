@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:meal_manager/utils/.utilities.dart';
 
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth;
@@ -11,9 +12,10 @@ class AuthenticationService {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
+      printHint("signIn: success");
       return "success";
     } on FirebaseAuthException catch (e) {
-      print(e.code);
+      printError("signIn: ${e.code}");
       return e.code.toString();
     }
   }
@@ -23,17 +25,21 @@ class AuthenticationService {
       if (password == password2) {
         await _firebaseAuth.createUserWithEmailAndPassword(
             email: email, password: password);
+        printHint("signUp: success");
         return "success";
       } else {
+        printError("signUp: passwords-not-identical");
         return "passwords-not-identical";
       }
     } on FirebaseAuthException catch (e) {
+      printError("signIn: ${e.code}");
       return e.code.toString();
     }
   }
 
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
+    printHint("signOut: success");
   }
 
   String errorHandling(error) {

@@ -108,8 +108,8 @@ class _SignInState extends State<SignIn> {
             Text(context.read<AuthenticationService>().errorHandling(status),
                 style: TextStyle(color: Theme.of(context).errorColor)),
             TextButton(
-                onPressed: () {
-                  context
+                onPressed: () async {
+                  await context
                       .read<AuthenticationService>()
                       .signIn(email, password)
                       .then((value) => setState(() => status = value));

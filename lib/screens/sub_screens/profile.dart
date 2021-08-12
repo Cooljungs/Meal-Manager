@@ -35,9 +35,8 @@ class _ProfileState extends State<Profile> {
               child: TextButton(
             child: Text("Abmelden"),
             onPressed: () {
+              Navigator.pop(context);
               context.read<AuthenticationService>().signOut();
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => SignIn()));
             },
           )),
         ],
