@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import 'package:meal_manager/config/themes/theme_config.dart';
 
 const Color light_primaryColor = Color(0xffFFFFFF);
 const Color light_onPrimaryColor = Color(0xff000000);

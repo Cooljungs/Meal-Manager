@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
-import 'package:meal_manager/constants/asset_path.dart';
 import 'package:meal_manager/core/auth/auth_service.dart';
-import 'package:meal_manager/core/login/sign_in.dart';
 import 'package:meal_manager/utils/avatars.dart';
 
 class Profile extends StatefulWidget {
@@ -28,9 +25,12 @@ class _ProfileState extends State<Profile> {
             padding: const EdgeInsets.fromLTRB(0, 10, 16, 10),
             child: InkWell(
                 borderRadius: BorderRadius.circular(999),
-                child: avatarPainter(context, 256),
+                child: avatarPainter(context, 6, 256),
                 onTap: () {}),
           ),
+          Center(
+              child: Text(
+                  "Jaja, ich weiß.\nDie Avatare sind jetzt gerade\ndie coolsten, aber hey;\nMAN KANN DIE FARBEN ÄNDERN!1!\n\n")),
           Center(
               child: TextButton(
             child: Text("Abmelden"),

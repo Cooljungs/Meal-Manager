@@ -62,7 +62,7 @@ class _SignUpVerifyState extends State<SignUpVerify> {
                   status == "success"
                       ? Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Main()))
-                      : null;
+                      : print("");
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(top: 16, bottom: 16),

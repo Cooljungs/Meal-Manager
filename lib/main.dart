@@ -37,6 +37,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => GroupProvider()),
         ChangeNotifierProvider(create: (_) => IndexProvider()),
+        ChangeNotifierProvider(create: (_) => ColorProvider()),
+        ChangeNotifierProvider(create: (_) => DisplayProvider()),
         Provider<AuthenticationService>(
             create: (_) => AuthenticationService(FirebaseAuth.instance)),
         StreamProvider(
@@ -48,7 +50,7 @@ class MyApp extends StatelessWidget {
       /// Statt direkt Main() zu starten, wird hier zuerst auf den
       /// themeHandler [.themes.dart] verwiesen, der das Light- und
       /// Dark-Theme regelt. Dieser wiederum startet dann Main().
-      child: themeHandler(context),
+      child: ThemeHandler(),
     );
   }
 }
@@ -77,6 +79,10 @@ class Main extends StatefulWidget {
 class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
+    Provider.of<GroupProvider>(context, listen: false).initGroup();
+    Provider.of<ColorProvider>(context, listen: false).initColors();
+    Provider.of<DisplayProvider>(context, listen: false).initDisplay();
+
     /// Scaffold = Grundgerüst einer App bzw. App-Seite
     return Scaffold(
       //

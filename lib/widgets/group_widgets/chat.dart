@@ -53,7 +53,7 @@ class _ChatState extends State<Chat> {
                           topLeft: Radius.circular(16),
                           topRight: Radius.circular(16),
                           bottomRight: Radius.circular(16)),
-                      color: Colors.blue[100]),
+                      color: Colors.blue.withOpacity(0.3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -73,7 +73,7 @@ class _ChatState extends State<Chat> {
                           topLeft: Radius.circular(16),
                           topRight: Radius.circular(16),
                           bottomLeft: Radius.circular(16)),
-                      color: Colors.grey[300]),
+                      color: Colors.grey.withOpacity(0.3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -90,7 +90,7 @@ class _ChatState extends State<Chat> {
                           topLeft: Radius.circular(16),
                           topRight: Radius.circular(16),
                           bottomRight: Radius.circular(16)),
-                      color: Colors.green[100]),
+                      color: Colors.green.withOpacity(0.3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -109,7 +109,7 @@ class _ChatState extends State<Chat> {
                           topLeft: Radius.circular(16),
                           topRight: Radius.circular(16),
                           bottomRight: Radius.circular(16)),
-                      color: Colors.red[100]),
+                      color: Colors.red.withOpacity(0.3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -128,7 +128,7 @@ class _ChatState extends State<Chat> {
                           topLeft: Radius.circular(16),
                           topRight: Radius.circular(16),
                           bottomRight: Radius.circular(16)),
-                      color: Colors.green[100]),
+                      color: Colors.green.withOpacity(0.3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -147,7 +147,7 @@ class _ChatState extends State<Chat> {
                           topLeft: Radius.circular(16),
                           topRight: Radius.circular(16),
                           bottomRight: Radius.circular(16)),
-                      color: Colors.red[100]),
+                      color: Colors.red.withOpacity(0.3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -167,7 +167,7 @@ class _ChatState extends State<Chat> {
                           topLeft: Radius.circular(16),
                           topRight: Radius.circular(16),
                           bottomRight: Radius.circular(16)),
-                      color: Colors.blue[100]),
+                      color: Colors.blue.withOpacity(0.3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -186,7 +186,7 @@ class _ChatState extends State<Chat> {
                           topLeft: Radius.circular(16),
                           topRight: Radius.circular(16),
                           bottomRight: Radius.circular(16)),
-                      color: Colors.green[100]),
+                      color: Colors.green.withOpacity(0.3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -205,7 +205,7 @@ class _ChatState extends State<Chat> {
                           topLeft: Radius.circular(16),
                           topRight: Radius.circular(16),
                           bottomRight: Radius.circular(16)),
-                      color: Colors.orange[100]),
+                      color: Colors.orange.withOpacity(0.3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -224,7 +224,7 @@ class _ChatState extends State<Chat> {
                           topLeft: Radius.circular(16),
                           topRight: Radius.circular(16),
                           bottomLeft: Radius.circular(16)),
-                      color: Colors.grey[300]),
+                      color: Colors.grey.withOpacity(0.3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -242,7 +242,7 @@ class _ChatState extends State<Chat> {
                           topLeft: Radius.circular(16),
                           topRight: Radius.circular(16),
                           bottomRight: Radius.circular(16)),
-                      color: Colors.blue[100]),
+                      color: Colors.blue.withOpacity(0.3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -261,7 +261,7 @@ class _ChatState extends State<Chat> {
                           topLeft: Radius.circular(16),
                           topRight: Radius.circular(16),
                           bottomRight: Radius.circular(16)),
-                      color: Colors.red[100]),
+                      color: Colors.red.withOpacity(0.3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -280,7 +280,7 @@ class _ChatState extends State<Chat> {
                           topRight: Radius.circular(16),
                           bottomLeft: Radius.circular(16),
                           bottomRight: Radius.circular(16)),
-                      color: Colors.red[100]),
+                      color: Colors.red.withOpacity(0.3)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -299,21 +299,22 @@ class _ChatState extends State<Chat> {
                   height: 42,
                   //width: 250,
                   decoration: BoxDecoration(
-                    color: Colors.grey[300],
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: TextField(
+                    textAlignVertical: TextAlignVertical.bottom,
                     decoration: InputDecoration(
-                      hintText: "Nachricht",
+                      fillColor: Theme.of(context).primaryColor,
+                      hintText: "Nachricht schreiben",
                       hintStyle: TextStyle(color: Colors.grey),
                       enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0x00000000))),
+                          borderSide: BorderSide(color: Colors.transparent)),
                       border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0x00000000))),
+                          borderSide: BorderSide(color: Colors.transparent)),
                       focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0x00000000))),
+                          borderSide: BorderSide(color: Colors.transparent)),
                       errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0x00000000))),
+                          borderSide: BorderSide(color: Colors.transparent)),
                     ),
                   ),
                 ),

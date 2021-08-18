@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:meal_manager/screens/sub_screens/settings.dart';
+import 'package:meal_manager/utils/.utilities.dart';
 import 'package:meal_manager/utils/animations.dart';
 import 'package:meal_manager/utils/providers.dart';
-import 'package:provider/provider.dart';
 
 class ScaffoldDrawer extends StatefulWidget {
   const ScaffoldDrawer({Key? key}) : super(key: key);
@@ -12,7 +14,7 @@ class ScaffoldDrawer extends StatefulWidget {
 }
 
 class _ScaffoldDrawerState extends State<ScaffoldDrawer> {
-  /// Gruppen-Namen zum Testen. Später dann aus Datenbank
+  /// TODO: Gruppen-Namen zum Testen. Später dann aus Datenbank
   List groups = ["Die Fünf Fritzen", "Leipziger Banausen"];
 
   @override
@@ -41,8 +43,14 @@ class _ScaffoldDrawerState extends State<ScaffoldDrawer> {
                         leading: Icon(Icons.group_rounded,
                             color: Theme.of(context).colorScheme.onPrimary),
                         title: Text(groups[index]),
+                        tileColor: groups[index] ==
+                                Provider.of<GroupProvider>(context)
+                                    .selectedGroup
+                            ? Theme.of(context).disabledColor
+                            : Colors.transparent,
                         onTap: () {
                           Navigator.pop(context);
+                          printHint("'${groups[index]}' ausgewählt");
                           Provider.of<GroupProvider>(context, listen: false)
                               .setGroup(groups[index]);
                         })

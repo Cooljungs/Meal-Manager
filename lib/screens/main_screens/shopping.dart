@@ -112,8 +112,10 @@ class ShoppingTileState extends State<ShoppingTile> {
             : Theme.of(context).cardColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         trailing: widget.zutaten[widget.index][3]
-            ? Icon(Icons.task_alt_outlined, color: Colors.black)
-            : Icon(Icons.radio_button_unchecked_rounded, color: Colors.black),
+            ? Icon(Icons.task_alt_outlined,
+                color: Theme.of(context).colorScheme.onPrimary)
+            : Icon(Icons.radio_button_unchecked_rounded,
+                color: Theme.of(context).colorScheme.onPrimary),
         title: Text(widget.zutaten[widget.index][0]),
         subtitle: Text(widget.zutaten[widget.index][2]),
       ),

@@ -28,13 +28,13 @@ class _ScaffoldAppBarState extends State<ScaffoldAppBar> {
               onPressed: () => Scaffold.of(context).openDrawer())),
 
       /// Title-Text von Provider "GroupProvider" [provider.dart]
-      title: Text(Provider.of<GroupProvider>(context).groupName),
+      title: Text(Provider.of<GroupProvider>(context).selectedGroup),
       actions: [
         Container(
           padding: const EdgeInsets.fromLTRB(0, 10, 16, 10),
           child: InkWell(
               borderRadius: BorderRadius.circular(999),
-              child: avatarPainter(context, 36),
+              child: avatarPainter(context, 6, 36),
               onTap: () => Navigator.push(
                   context, Teleport(child: Profile(), type: "scale_topRight"))),
         ),

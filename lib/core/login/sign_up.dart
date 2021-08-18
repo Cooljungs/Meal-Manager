@@ -135,7 +135,7 @@ class _SignUpState extends State<SignUp> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => SignUpVerify()))
-                      : null;
+                      : print("");
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(top: 16, bottom: 16),

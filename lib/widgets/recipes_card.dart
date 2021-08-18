@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meal_manager/constants/asset_path.dart';
 
 class RecipeCard extends StatefulWidget {
   final int index;
@@ -36,7 +37,7 @@ class _RecipeCardState extends State<RecipeCard> {
                     fit: StackFit.expand,
                     children: [
                       Image.asset(
-                          "assets/images/recipes/Rezept_ChickenShorba.png",
+                          "$recipes/Rezept_ChickenShorba.png",
                           fit: BoxFit.fitWidth),
                       Positioned.fill(
                           child: Material(
