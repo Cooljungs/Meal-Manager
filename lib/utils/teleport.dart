@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:meal_manager/utils/.utilities.dart';
 
 ///* Transitions ("Teleport")
@@ -25,7 +24,7 @@ class Teleport extends PageRouteBuilder {
     required this.child,
     this.type = "none",
     this.duration = const Duration(milliseconds: 300),
-    this.reverseDuration = const Duration(milliseconds: 150),
+    this.reverseDuration = const Duration(milliseconds: 200),
   }) : super(
           transitionDuration: duration,
           reverseTransitionDuration: reverseDuration,
@@ -118,6 +117,18 @@ class Teleport extends PageRouteBuilder {
           child: child,
         );
       case "scale_bottomRight":
+        return FadeTransition(
+          opacity: animation,
+          child: Container(
+            color: Colors.white,
+            child: ScaleTransition(
+              alignment: Alignment.bottomRight,
+              scale: animation,
+              child: child,
+            ),
+          ),
+        );
+      case "scale_bottomRight_ORIGINAL":
         return ScaleTransition(
           alignment: Alignment.bottomRight,
           scale: animation,

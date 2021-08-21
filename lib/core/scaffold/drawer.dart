@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:meal_manager/screens/sub_screens/settings.dart';
 import 'package:meal_manager/utils/.utilities.dart';
-import 'package:meal_manager/utils/animations.dart';
+import 'package:meal_manager/utils/teleport.dart';
 import 'package:meal_manager/utils/providers.dart';
 
 class ScaffoldDrawer extends StatefulWidget {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:meal_manager/screens/sub_screens/profile.dart';
-import 'package:meal_manager/utils/animations.dart';
+import 'package:meal_manager/utils/teleport.dart';
 import 'package:meal_manager/utils/avatars.dart';
 import 'package:meal_manager/utils/providers.dart';
 
@@ -34,7 +34,7 @@ class _ScaffoldAppBarState extends State<ScaffoldAppBar> {
           padding: const EdgeInsets.fromLTRB(0, 10, 16, 10),
           child: InkWell(
               borderRadius: BorderRadius.circular(999),
-              child: avatarPainter(context, 6, 36),
+              child: Avatar(6, 36),
               onTap: () => Navigator.push(
                   context, Teleport(child: Profile(), type: "scale_topRight"))),
         ),

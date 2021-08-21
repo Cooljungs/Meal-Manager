@@ -26,7 +26,7 @@ class _SettingsState extends State<Settings> {
                 padding: EdgeInsets.only(right: 16),
                 child: colorTileExpanded
                     ? Icon(Icons.keyboard_arrow_up_rounded,
-                        color: Theme.of(context).colorScheme.onPrimary)
+                        color: Theme.of(context).accentColor)
                     : Icon(Icons.keyboard_arrow_down_rounded,
                         color: Theme.of(context).colorScheme.onPrimary)),
           ),
@@ -39,11 +39,15 @@ class _SettingsState extends State<Settings> {
             child: GridView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 6,
+                  crossAxisCount: Provider.of<ColorProvider>(context)
+                      .secondaryColorList
+                      .length,
                   crossAxisSpacing: 16,
                   mainAxisSpacing: 16,
                 ),
-                itemCount: 6,
+                itemCount: Provider.of<ColorProvider>(context)
+                    .secondaryColorList
+                    .length,
                 itemBuilder: (context, index) {
                   return GridTile(
                     child: ClipRRect(
@@ -52,6 +56,11 @@ class _SettingsState extends State<Settings> {
                         color: Color(Provider.of<ColorProvider>(context)
                             .secondaryColorList[index]),
                         child: InkWell(
+                          child: Color(Provider.of<ColorProvider>(context)
+                                      .secondaryColorList[index]) ==
+                                  Theme.of(context).accentColor
+                              ? Icon(Icons.done_rounded)
+                              : Container(),
                           onTap: () {
                             Provider.of<ColorProvider>(context, listen: false)
                                 .setSecondaryColor(Provider.of<ColorProvider>(

@@ -3,8 +3,9 @@ import 'package:meal_manager/utils/.utilities.dart';
 
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth;
+  final context;
 
-  AuthenticationService(this._firebaseAuth);
+  AuthenticationService(this._firebaseAuth, this.context);
 
   Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
 
@@ -25,6 +26,7 @@ class AuthenticationService {
       if (password == password2) {
         await _firebaseAuth.createUserWithEmailAndPassword(
             email: email, password: password);
+        verify();
         printHint("signUp: success");
         return "success";
       } else {
@@ -40,6 +42,11 @@ class AuthenticationService {
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
     printHint("signOut: success");
+  }
+
+  Future<void> verify() async {
+    User? user = _firebaseAuth.currentUser;
+    user != null ? user.sendEmailVerification() : null;
   }
 
   String errorHandling(error) {

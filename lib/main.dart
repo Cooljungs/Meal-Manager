@@ -7,10 +7,12 @@ import 'package:provider/provider.dart';
 import 'package:meal_manager/config/themes/theme_config.dart';
 import 'package:meal_manager/core/auth/auth_service.dart';
 import 'package:meal_manager/core/login/sign_in.dart';
+import 'package:meal_manager/core/login/verify.dart';
 import 'package:meal_manager/core/scaffold/app_bar.dart';
 import 'package:meal_manager/core/scaffold/bottom_navigation_bar.dart';
 import 'package:meal_manager/core/scaffold/drawer.dart';
 import 'package:meal_manager/core/scaffold/floating_action_button.dart';
+import 'package:meal_manager/utils/.utilities.dart';
 import 'package:meal_manager/utils/providers.dart';
 
 import 'package:meal_manager/screens/main_screens/shopping.dart';
@@ -22,9 +24,9 @@ Future<void> main() async {
   /// Lässt die App mit Firebase kommunizieren
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  runApp(MyApp());
 
   /// Startet die Anwendung bzw. MyApp()
-  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -32,15 +34,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     /// Weist der App mehrere Provider zu.
     /// Provider sind Klassen, die sich von quasi überall ausführen lassen.
-    /// Sie können Dinge verändern, die sonst nicht in Verbindung stehen.
+    /// Das heißt, sie können Elemente auf globaler Ebene beeinflussen.
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => GroupProvider()),
         ChangeNotifierProvider(create: (_) => IndexProvider()),
         ChangeNotifierProvider(create: (_) => ColorProvider()),
         ChangeNotifierProvider(create: (_) => DisplayProvider()),
+        ChangeNotifierProvider(create: (_) => ShoppingProvider()),
         Provider<AuthenticationService>(
-            create: (_) => AuthenticationService(FirebaseAuth.instance)),
+            create: (_) =>
+                AuthenticationService(FirebaseAuth.instance, context)),
         StreamProvider(
             create: (context) =>
                 context.read<AuthenticationService>().authStateChanges,
@@ -48,8 +52,8 @@ class MyApp extends StatelessWidget {
       ],
 
       /// Statt direkt Main() zu starten, wird hier zuerst auf den
-      /// themeHandler [.themes.dart] verwiesen, der das Light- und
-      /// Dark-Theme regelt. Dieser wiederum startet dann Main().
+      /// ThemeHandler [theme_config.dart] verwiesen, der das Light- und
+      /// Dark-Theme regelt. Dieser wiederum startet den weiteren .
       child: ThemeHandler(),
     );
   }
@@ -61,28 +65,48 @@ class UserCheck extends StatefulWidget {
 }
 
 class _UserCheckState extends State<UserCheck> {
+  checkUser(firebaseUser) {
+    FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+    User? user = _firebaseAuth.currentUser;
+
+    if (firebaseUser == null) {
+      return SignIn();
+    } else {
+      user != null ? user.reload() : null;
+
+      if (user != null ? user.emailVerified : false) {
+        return Main();
+      } else {
+        return Verify();
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User?>();
-    print(firebaseUser);
-    return firebaseUser == null ? SignIn() : Main();
+    return checkUser(firebaseUser);
   }
 }
 
 class Main extends StatefulWidget {
   @override
-  _MainState createState() => _MainState();
 
-  /// Startet neuen State des Widgets.
+  /// Startet neuen Widget-State
+  _MainState createState() => _MainState();
 }
 
 class _MainState extends State<Main> {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     Provider.of<GroupProvider>(context, listen: false).initGroup();
     Provider.of<ColorProvider>(context, listen: false).initColors();
     Provider.of<DisplayProvider>(context, listen: false).initDisplay();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     /// Scaffold = Grundgerüst einer App bzw. App-Seite
     return Scaffold(
       //

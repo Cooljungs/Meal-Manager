@@ -1,18 +1,22 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:meal_manager/utils/teleport.dart';
 import 'package:provider/provider.dart';
 
 import 'package:meal_manager/main.dart';
 import 'package:meal_manager/core/auth/auth_service.dart';
 import 'package:meal_manager/core/login/sign_in.dart';
 
-class SignUpVerify extends StatefulWidget {
-  const SignUpVerify({Key? key}) : super(key: key);
+class Verify extends StatefulWidget {
+  const Verify({Key? key}) : super(key: key);
 
   @override
-  _SignUpVerifyState createState() => _SignUpVerifyState();
+  _VerifyState createState() => _VerifyState();
 }
 
-class _SignUpVerifyState extends State<SignUpVerify> {
+class _VerifyState extends State<Verify> {
   String email = "";
   String password = "";
   String password2 = "";
@@ -37,54 +41,38 @@ class _SignUpVerifyState extends State<SignUpVerify> {
         child: ListView(
           physics: NeverScrollableScrollPhysics(),
           children: [
+            Icon(Icons.forward_to_inbox_rounded, size: 128),
             SizedBox(height: 16),
-            TextField(
-              decoration: InputDecoration(
-                hintText: "B8WTC6",
-                labelText: "Code eingeben",
-              ),
-              onChanged: (value) => setState(() {
-                status = "";
-                password2 = value;
-              }),
-            ),
-            SizedBox(height: 16),
-            Center(
-              child: Text(status != "success" ? status : "",
-                  style: TextStyle(color: Theme.of(context).errorColor)),
-            ),
+            Text(
+                "Bitte klicken Sie auf den Bestätigungslink, den wir Ihnen per E-Mail haben zukommen lassen. Vielen Dank."),
+            SizedBox(height: 32),
             TextButton(
-                onPressed: () async {
-                  await context
-                      .read<AuthenticationService>()
-                      .signUp(email, password, password2)
-                      .then((value) => setState(() => status = value));
-                  status == "success"
-                      ? Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Main()))
-                      : print("");
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 16, bottom: 16),
-                  child: Text("Bestätigen"),
-                )),
-            SizedBox(height: 16),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16, bottom: 16),
+                child: Text("Aktualisieren"),
+              ),
+              onPressed: () => Navigator.pushReplacement(
+                  context, Teleport(child: UserCheck())),
+            ),
             TextButton(
               style: TextButton.styleFrom(backgroundColor: Colors.transparent),
               child: RichText(
                 text: TextSpan(
-                    text: "Code nicht erhalten? ",
+                    text: "Anderes Konto verwenden? ",
                     style: Theme.of(context).textTheme.bodyText2,
                     children: [
                       TextSpan(
-                          text: " Erneut senden",
+                          text: " Anmelden",
                           style: TextStyle(
                               color: Theme.of(context).accentColor,
                               fontWeight: FontWeight.bold))
                     ]),
               ),
-              onPressed: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => SignIn())),
+              onPressed: () {
+                Provider.of<AuthenticationService>(context, listen: false)
+                    .signOut();
+                Navigator.pushReplacement(context, Teleport(child: SignIn()));
+              },
             )
           ],
         ),

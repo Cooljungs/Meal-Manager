@@ -83,3 +83,20 @@ class DisplayProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+class ShoppingProvider extends ChangeNotifier {
+  List zutaten = [
+    ["Tomaten", "4 Stück", "Chicken Shorba, Pizza", true],
+    ["Brokkoli", "500g", "Pizza", true],
+    ["Erdbeeren", "100g", "Erdbeer-Smoothie", true],
+    ["Paprika", "5 Stück", "Bolognese, Gefüllte Paprika, Pizza", true],
+    ["Nudeln", "250g", "Bolognese", true],
+    ["Hackfleisch", "420g", "Gefüllte Paprika", false],
+    ["Basilikum", "1 Stück", "Bolognese, Chicken Shorba, Pizza", false],
+  ];
+
+  changeStatus(int index) {
+    zutaten[index][3] = !zutaten[index][3];
+    notifyListeners();
+  }
+}

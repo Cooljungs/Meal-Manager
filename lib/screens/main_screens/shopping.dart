@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:meal_manager/utils/providers.dart';
 
 class Shopping extends StatefulWidget {
   @override
@@ -6,22 +8,6 @@ class Shopping extends StatefulWidget {
 }
 
 class _ShoppingState extends State<Shopping> {
-  List zutaten = [
-    ["Tomaten", "4 Stück", "Chicken Shorba, Pizza", true],
-    ["Brokkoli", "500g", "Pizza", false],
-    ["Erdbeeren", "100g", "Erdbeer-Smoothie", false],
-    ["Paprika", "5 Stück", "Bolognese, Gefüllte Paprika, Pizza", true],
-    ["Nudeln", "250g", "Bolognese", false],
-    ["Hackfleisch", "420g", "Gefüllte Paprika", true],
-    ["Basilikum", "1 Stück", "Bolognese, Chicken Shorba, Pizza", true],
-  ];
-
-  void toggleCheck(int index) {
-    setState(() => zutaten[index][3] == true
-        ? zutaten[index][3] = false
-        : zutaten[index][3] = true);
-  }
-
   bool doneExpanded = false;
 
   @override
@@ -38,9 +24,11 @@ class _ShoppingState extends State<Shopping> {
           ),
         ),
         Column(
-          children: List.generate(zutaten.length, (index) {
-            return zutaten[index][3] == false
-                ? ShoppingTile(index, zutaten, () => toggleCheck(index))
+          children: List.generate(
+              Provider.of<ShoppingProvider>(context).zutaten.length, (index) {
+            return Provider.of<ShoppingProvider>(context).zutaten[index][3] ==
+                    false
+                ? ShoppingTile(index)
                 : Container();
           }),
         ),
@@ -73,9 +61,13 @@ class _ShoppingState extends State<Shopping> {
           padding: const EdgeInsets.only(bottom: 150),
           child: doneExpanded
               ? Column(
-                  children: List.generate(zutaten.length, (index) {
-                    return zutaten[index][3] == true
-                        ? ShoppingTile(index, zutaten, () => toggleCheck(index))
+                  children: List.generate(
+                      Provider.of<ShoppingProvider>(context).zutaten.length,
+                      (index) {
+                    return Provider.of<ShoppingProvider>(context).zutaten[index]
+                                [3] ==
+                            true
+                        ? ShoppingTile(index)
                         : Container();
                   }),
                 )
@@ -88,36 +80,35 @@ class _ShoppingState extends State<Shopping> {
 
 class ShoppingTile extends StatefulWidget {
   final int index;
-  final List zutaten;
-  final Function toggleCheck;
-  const ShoppingTile(this.index, this.zutaten, this.toggleCheck);
+  const ShoppingTile(this.index);
 
   @override
   ShoppingTileState createState() => ShoppingTileState();
 }
 
 class ShoppingTileState extends State<ShoppingTile> {
-  bool check = false;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
       child: ListTile(
-        onTap: () {
-          widget.toggleCheck(widget.index);
-        },
-        tileColor: widget.zutaten[widget.index][3]
+        onTap: () => Provider.of<ShoppingProvider>(context, listen: false)
+            .changeStatus(widget.index),
+        tileColor: Provider.of<ShoppingProvider>(context).zutaten[widget.index]
+                [3]
             ? Theme.of(context).disabledColor
             : Theme.of(context).cardColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        trailing: widget.zutaten[widget.index][3]
+        trailing: Provider.of<ShoppingProvider>(context).zutaten[widget.index]
+                [3]
             ? Icon(Icons.task_alt_outlined,
                 color: Theme.of(context).colorScheme.onPrimary)
             : Icon(Icons.radio_button_unchecked_rounded,
                 color: Theme.of(context).colorScheme.onPrimary),
-        title: Text(widget.zutaten[widget.index][0]),
-        subtitle: Text(widget.zutaten[widget.index][2]),
+        title: Text(
+            Provider.of<ShoppingProvider>(context).zutaten[widget.index][0]),
+        subtitle: Text(
+            Provider.of<ShoppingProvider>(context).zutaten[widget.index][2]),
       ),
     );
   }

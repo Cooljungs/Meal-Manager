@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:meal_manager/core/login/sign_in.dart';
+import 'package:meal_manager/utils/teleport.dart';
 import 'package:provider/provider.dart';
 
 import 'package:meal_manager/constants/icon_classes.dart';
@@ -131,10 +133,7 @@ class _SignUpState extends State<SignUp> {
                       .signUp(email, password, password2)
                       .then((value) => setState(() => status = value));
                   status == "success"
-                      ? Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SignUpVerify()))
+                      ? Navigator.push(context, Teleport(child: Verify()))
                       : print("");
                 },
                 child: Padding(
@@ -156,8 +155,8 @@ class _SignUpState extends State<SignUp> {
                               fontWeight: FontWeight.bold))
                     ]),
               ),
-              onPressed: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SignUpVerify())),
+              onPressed: () =>
+                  Navigator.push(context, Teleport(child: SignIn())),
             )
           ],
         ),

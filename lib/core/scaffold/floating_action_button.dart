@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meal_manager/screens/main_screens/recipes.dart';
-import 'package:meal_manager/utils/animations.dart';
+import 'package:meal_manager/utils/teleport.dart';
 
 class ScaffoldFloatingActionButton extends StatefulWidget {
   const ScaffoldFloatingActionButton({Key? key}) : super(key: key);

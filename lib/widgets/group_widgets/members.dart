@@ -43,7 +43,7 @@ class _MemberListState extends State<MemberList> {
                 : Theme.of(context).cardColor,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-            leading: avatarPainter(context, groupMembers[index][2], 36),
+            leading: Avatar(groupMembers[index][2], 36),
             title: Text(groupMembers[index][0]),
             subtitle: Text(groupMembers[index][1]),
             onTap: () => showDialog(
@@ -52,7 +52,7 @@ class _MemberListState extends State<MemberList> {
                       title: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          avatarPainter(context, groupMembers[index][2], 128),
+                          Avatar(groupMembers[index][2], 128),
                           Text(groupMembers[index][0] == userName
                               ? "Mein Profil"
                               : groupMembers[index][0])

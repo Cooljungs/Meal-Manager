@@ -17,7 +17,8 @@ class ThemeHandler extends StatelessWidget {
         context,
         light_primaryColor,
         light_onPrimaryColor,
-        light_secondaryColor,
+        Provider.of<ColorProvider>(context)
+            .secondaryColor, //light_secondaryColor,
         light_onSecondaryColor,
         light_backgroundColor,
         light_surfaceColor,
@@ -29,7 +30,8 @@ class ThemeHandler extends StatelessWidget {
         context,
         dark_primaryColor,
         dark_onPrimaryColor,
-        dark_secondaryColor,
+        Provider.of<ColorProvider>(context)
+            .secondaryColor, //dark_secondaryColor,
         dark_onSecondaryColor,
         dark_backgroundColor,
         dark_surfaceColor,
