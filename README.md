@@ -1,6 +1,4 @@
-# Meal Manager
-[noch in Entwicklung]
-
+# Meal Manager [in Entwicklung]
 
 Plant eure Mahlzeiten zusammen mit Freunden und Familie. 
 Wählt eure Lieblingsrezepte aus einem großen Kochbuch und fügt eigene hinzu. 
